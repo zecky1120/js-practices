@@ -27,3 +27,4 @@ for (let d = 1; d <= endOfMonth; d++) {
     process.stdout.write("\n");
   }
 }
+console.log();
