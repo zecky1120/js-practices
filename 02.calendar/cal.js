@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import minimist from "minimist";
 import dayjs from "dayjs";
 import "dayjs/locale/ja.js";
