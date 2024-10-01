@@ -11,7 +11,6 @@ const firstDay = dayjs(`${year}-${month}-1`);
 const lastDay = firstDay.daysInMonth();
 const space = firstDay.day();
 let currentDate = firstDay;
-
 console.log(`      ${month}月 ${year}     `);
 console.log("日 月 火 水 木 金 土");
 process.stdout.write("   ".repeat(space));
