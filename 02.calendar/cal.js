@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-import dayjs from "dayjs";
 
 const argv = minimist(process.argv.slice(2));
 const today = new Date();
