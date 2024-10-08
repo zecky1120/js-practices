@@ -4,23 +4,23 @@ import minimist from "minimist";
 import dayjs from "dayjs";
 
 const argv = minimist(process.argv.slice(2));
-const today = dayjs();
-const year = argv.y ?? today.year();
-const month = argv.m ?? today.month() + 1;
-const firstDay = dayjs(`${year}-${month}-1`);
-const lastDay = firstDay.daysInMonth();
-const space = firstDay.day();
-let currentDate = firstDay;
+const today = new Date();
+const year = argv.y ?? new Date(today).getFullYear();
+const month = argv.m ?? new Date(today).getMonth() + 1;
+const startDate = new Date(year, month, 1).getDate();
+const lastDate = new Date(year, month, 0).getDate();
+const startDayOfWeek = new Date(year, month - 1, 1).getDay();
+
 console.log(`      ${month}月 ${year}     `);
 console.log("日 月 火 水 木 金 土");
-process.stdout.write("   ".repeat(space));
-for (let date = 1; date <= lastDay; date++) {
+process.stdout.write("   ".repeat(startDayOfWeek));
+for (let date = startDate; date <= lastDate; date++) {
   process.stdout.write(String(date).padStart(2));
-  if ((space + date) % 7 === 0) {
+  const saturDay = new Date(year, month - 1, date).getDay() === 6;
+  const lastDay = date === lastDate;
+  if (saturDay || lastDay) {
     process.stdout.write("\n");
-  } else if (date < lastDay) {
+  } else {
     process.stdout.write(" ");
   }
-  currentDate = currentDate.add(1, "day");
 }
-process.stdout.write("\n");
