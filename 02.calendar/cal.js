@@ -14,7 +14,9 @@ console.log("日 月 火 水 木 金 土");
 process.stdout.write("   ".repeat(firstDate.getDay()));
 for (let date = firstDate; date <= lastDate; date.setDate(date.getDate() + 1)) {
   process.stdout.write(String(date.getDate()).padStart(2));
-  if (date.getDay() === 6 || date.getDate() === lastDate.getDate()) {
+  const saturDay = date.getDay() === 6;
+  const last_day_of_month = date.getDate() === lastDate.getDate();
+  if (saturDay || last_day_of_month) {
     process.stdout.write("\n");
   } else {
     process.stdout.write(" ");
