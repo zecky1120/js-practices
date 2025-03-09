@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import sqlite3 from "sqlite3";
-import { runSql, showSql, closeSql } from "./promiseSql.js";
+import { runSql, showSql, closeSql } from "../promiseSql.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql =
