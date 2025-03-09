@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import sqlite3 from "sqlite3";
-import { runSql, showSql, closeSql } from "../promiseSql.js";
+import { runSql, showSql, closeSql } from "../sqlUtils.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql = `CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT UNIQUE NOT NULL)`;
