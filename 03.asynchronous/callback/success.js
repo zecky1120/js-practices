@@ -17,6 +17,7 @@ db.run(createTableSql, () => {
       console.log(rows);
       db.run(dropTableSql, () => {
         console.log("テーブルを削除しました");
+        db.close();
       });
     });
   });
