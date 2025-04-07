@@ -16,8 +16,8 @@ try {
   await runSql(db, insertSql, bookTitle);
   console.log("本が追加されました");
 } catch (err) {
-  if (err.code === "SQLITE_ERROR") {
-    console.error(err);
+  if (err instanceof Error && err.code === "SQLITE_ERROR") {
+    console.error(err.message);
   } else {
     throw err;
   }
@@ -25,8 +25,8 @@ try {
 try {
   await executeSql(db, selectSql);
 } catch (err) {
-  if (err.code === "SQLITE_ERROR") {
-    console.error(err);
+  if (err instanceof Error && err.code === "SQLITE_ERROR") {
+    console.error(err.message);
   } else {
     throw err;
   }
