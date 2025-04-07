@@ -11,9 +11,6 @@ const dropTableSql = "DROP TABLE books";
 
 runSql(db, createTableSql)
   .then(() => {
-    console.log("テーブルが作成されました");
-  })
-  .then(() => {
     return runSql(db, insertSql, bookTitle);
   })
   .then(() => {
