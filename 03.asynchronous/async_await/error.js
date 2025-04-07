@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import sqlite3 from "sqlite3";
 import { runSql, showSql, closeSql } from "../sqlUtils.js";
 
