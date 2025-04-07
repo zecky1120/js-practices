@@ -14,15 +14,11 @@ runSql(db, createTableSql)
     console.log("テーブルが作成されました");
     return runSql(db, insertSql, bookTitle);
   })
-  .then(() => {
-    return runSql(db, insertSql);
-  })
+  .then(() => runSql(db, insertSql))
   .catch((err) => {
     console.error(err);
   })
-  .then(() => {
-    return showSql(db, selectSql);
-  })
+  .then(() => showSql(db, selectSql))
   .catch((err) => {
     console.error(err);
   })
@@ -30,6 +26,4 @@ runSql(db, createTableSql)
     console.log("テーブルを削除しました");
     return runSql(db, dropTableSql);
   })
-  .finally(() => {
-    return closeSql(db);
-  });
+  .finally(() => closeSql(db));
