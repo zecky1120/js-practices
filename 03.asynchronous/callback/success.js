@@ -12,7 +12,7 @@ db.run(createTableSql, () => {
   console.log("テーブルが作成されました");
   db.run(insertSql, bookTitle, () => {
     console.log("本が追加されました");
-    db.all(selectSql, (err, rows) => {
+    db.all(selectSql, (_, rows) => {
       console.log(rows);
       db.run(dropTableSql, () => {
         console.log("テーブルを削除しました");
