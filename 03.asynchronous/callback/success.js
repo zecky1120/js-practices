@@ -10,9 +10,9 @@ const dropTableSql = "DROP TABLE books";
 
 db.run(createTableSql, () => {
   console.log("テーブルが作成されました");
-  db.run(insertSql, bookTitle, () => {
-    console.log("本が追加されました");
-    db.all(selectSql, (_, rows) => {
+  db.run(insertSql, bookTitle, function () {
+    console.log(`本(id: ${this.lastID})が追加されました`);
+    db.get(selectSql, [this.lastID], (_, rows) => {
       console.log(rows);
       db.run(dropTableSql, () => {
         console.log("テーブルを削除しました");
