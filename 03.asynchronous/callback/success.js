@@ -5,7 +5,7 @@ const createTableSql =
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT UNIQUE NOT NULL)";
 const insertSql = "INSERT INTO books (title) VALUES (?)";
 const bookTitle = "JavaScript Primer 迷わないための入門";
-const selectSql = "SELECT * FROM books";
+const selectSql = "SELECT * FROM books WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
 db.run(createTableSql, () => {
