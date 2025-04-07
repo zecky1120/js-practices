@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { runSql, showSql, closeSql } from "../sqlUtils.js";
+import { runSql, executeSql, close } from "../sqlUtils.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql =
@@ -13,7 +13,7 @@ await runSql(db, createTableSql);
 console.log("テーブルが作成されました");
 await runSql(db, insertSql, bookTitle);
 console.log("本が追加されました");
-await showSql(db, selectSql);
+await executeSql(db, selectSql);
 await runSql(db, dropTableSql);
 console.log("テーブルを削除しました");
-await closeSql(db);
+await close(db);

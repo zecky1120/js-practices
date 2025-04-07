@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 export const runSql = (db, sql, params) => {
   return new Promise((resolve, reject) => {
     db.run(sql, params, (err) => {
@@ -12,7 +10,7 @@ export const runSql = (db, sql, params) => {
   });
 };
 
-export const showSql = (db, sql) => {
+export const executeSql = (db, sql) => {
   return new Promise((resolve, reject) => {
     db.all(sql, (err, rows) => {
       if (err) {
@@ -25,7 +23,7 @@ export const showSql = (db, sql) => {
   });
 };
 
-export const closeSql = (db) => {
+export const close = (db) => {
   return new Promise((resolve, reject) => {
     db.close((err) => {
       if (err) {

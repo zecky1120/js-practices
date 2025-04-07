@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { runSql, showSql, closeSql } from "../sqlUtils.js";
+import { runSql, executeSql, close } from "../sqlUtils.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql =
@@ -23,7 +23,7 @@ try {
   }
 }
 try {
-  await showSql(db, selectSql);
+  await executeSql(db, selectSql);
 } catch (err) {
   if (err.code === "SQLITE_ERROR") {
     console.error(err);
@@ -35,4 +35,4 @@ try {
 await runSql(db, dropTableSql);
 console.log("テーブルを削除しました");
 
-await closeSql(db);
+await close(db);
