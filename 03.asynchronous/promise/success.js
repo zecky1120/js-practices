@@ -10,9 +10,7 @@ const selectSql = "SELECT * FROM books";
 const dropTableSql = "DROP TABLE books";
 
 runSql(db, createTableSql)
-  .then(() => {
-    return runSql(db, insertSql, bookTitle);
-  })
+  .then(() => runSql(db, insertSql, bookTitle))
   .then(() => {
     console.log("本が追加されました");
     return showSql(db, selectSql);
@@ -21,6 +19,4 @@ runSql(db, createTableSql)
     console.log("テーブルを削除しました");
     return runSql(db, dropTableSql);
   })
-  .finally(() => {
-    return closeSql(db);
-  });
+  .finally(() => closeSql(db));
