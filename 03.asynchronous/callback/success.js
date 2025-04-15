@@ -9,11 +9,10 @@ const selectSql = "SELECT * FROM books WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
 db.run(createTableSql, () => {
-  console.log("テーブルが作成されました");
   db.run(insertSql, bookTitle, function () {
-    console.log(`本(id: ${this.lastID})が追加されました`);
+    console.log(`本(ID: ${this.lastID})が追加されました`);
     db.get(selectSql, [this.lastID], (_, rows) => {
-      console.log(rows);
+      console.log(`ID: ${rows.id}, タイトル: ${rows.title}`);
       db.run(dropTableSql, () => {
         console.log("テーブルを削除しました");
         db.close();

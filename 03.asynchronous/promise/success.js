@@ -6,14 +6,17 @@ const createTableSql =
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT NOT NULL)";
 const insertSql = "INSERT INTO books (title) VALUES (?)";
 const bookTitle = "JavaScript Primer 迷わないための入門";
-const selectSql = "SELECT * FROM books";
+const selectSql = "SELECT * FROM books WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
 runSql(db, createTableSql)
   .then(() => runSql(db, insertSql, bookTitle))
-  .then(() => {
-    console.log("本が追加されました");
-    return executeSql(db, selectSql);
+  .then((result) => {
+    console.log(`本(ID: ${result.lastID})が追加されました`);
+    return executeSql(db, selectSql, [result.lastID]);
+  })
+  .then((row) => {
+    console.log(`ID: ${row.id}, タイトル: ${row.title}`);
   })
   .then(() => {
     console.log("テーブルを削除しました");

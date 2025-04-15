@@ -1,23 +1,22 @@
 export const runSql = (db, sql, params) => {
   return new Promise((resolve, reject) => {
-    db.run(sql, params, (err) => {
+    db.run(sql, params, function (err) {
       if (err) {
         reject(err);
       } else {
-        resolve();
+        resolve(this);
       }
     });
   });
 };
 
-export const executeSql = (db, sql) => {
+export const executeSql = (db, sql, params) => {
   return new Promise((resolve, reject) => {
-    db.all(sql, (err, rows) => {
+    db.get(sql, params, (err, row) => {
       if (err) {
         reject(err);
       } else {
-        console.log(rows);
-        resolve(rows);
+        resolve(row);
       }
     });
   });
