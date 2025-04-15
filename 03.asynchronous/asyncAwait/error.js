@@ -6,7 +6,7 @@ const createTableSql =
   "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT UNIQUE NOT NULL)";
 const insertSql = "INSERT INTO book (title) VALUES (?)";
 const bookTitle = "JavaScript Primer 迷わないための入門";
-const selectSql = "SELECT * FROM booka";
+const selectSql = "SELECT * FROM booka WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
 await runSql(db, createTableSql);
