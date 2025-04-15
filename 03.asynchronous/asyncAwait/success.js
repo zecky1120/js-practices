@@ -3,7 +3,7 @@ import { runSql, executeSql, close } from "../sqlUtils.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql =
-  "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT UNIQUE NOT NULL)";
+  "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT UNIQUE NOT NULL)";
 const insertSql = "INSERT INTO books (title) VALUES (?)";
 const bookTitle = "JavaScript Primer 迷わないための入門";
 const selectSql = "SELECT * FROM books WHERE id = ?";
