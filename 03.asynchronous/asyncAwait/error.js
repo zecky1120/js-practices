@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { runSql, executeSql, close } from "../sqlUtils.js";
+import { run, get, close } from "../sqlUtils.js";
 
 const db = new sqlite3.Database(":memory:");
 const createTableSql =
@@ -9,11 +9,11 @@ const bookTitle = "JavaScript Primer 迷わないための入門";
 const selectSql = "SELECT * FROM booka WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
-await runSql(db, createTableSql);
+await run(db, createTableSql);
 console.log("テーブルが作成されました");
 
 try {
-  await runSql(db, insertSql, bookTitle);
+  await run(db, insertSql, bookTitle);
   console.log("本が追加されました");
 } catch (err) {
   if (err instanceof Error && err.code === "SQLITE_ERROR") {
@@ -23,7 +23,7 @@ try {
   }
 }
 try {
-  await executeSql(db, selectSql);
+  await get(db, selectSql);
 } catch (err) {
   if (err instanceof Error && err.code === "SQLITE_ERROR") {
     console.error(err.message);
@@ -32,7 +32,7 @@ try {
   }
 }
 try {
-  await runSql(db, dropTableSql);
+  await run(db, dropTableSql);
   console.log("テーブルを削除しました");
 } finally {
   await close(db);
