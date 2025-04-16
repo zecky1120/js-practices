@@ -31,8 +31,9 @@ try {
     throw err;
   }
 }
-
-await runSql(db, dropTableSql);
-console.log("テーブルを削除しました");
-
-await close(db);
+try {
+  await runSql(db, dropTableSql);
+  console.log("テーブルを削除しました");
+} finally {
+  await close(db);
+}
