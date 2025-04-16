@@ -21,16 +21,14 @@ runSql(db, createTableSql)
     } else {
       throw err;
     }
+    return executeSql(db, selectSql);
   })
-  .then(() => executeSql(db, selectSql))
   .catch((err) => {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
       console.error(err.message);
     } else {
       throw err;
     }
-  })
-  .then(() => {
     console.log("テーブルを削除しました");
     return runSql(db, dropTableSql);
   })
