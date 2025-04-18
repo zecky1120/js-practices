@@ -21,4 +21,16 @@ export default class DbOperation {
       });
     };
   }
+
+  add = (content) => {
+    return new Promise((resolve, reject) => {
+      db.run(insertSql, content, (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve();
+        }
+      });
+    });
+  };
 }
