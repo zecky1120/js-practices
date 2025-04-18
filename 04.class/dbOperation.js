@@ -45,4 +45,16 @@ export default class DbOperation {
       });
     });
   };
+
+  remove = (content) => {
+    return new Promise((resolve, reject) => {
+      db.run(deleteSql, [content], (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve();
+        }
+      });
+    });
+  };
 }
