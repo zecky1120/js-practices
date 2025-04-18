@@ -33,4 +33,16 @@ export default class DbOperation {
       });
     });
   };
+
+  fetch = () => {
+    return new Promise((resolve, reject) => {
+      db.all(selectSql, (error, rows) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+  };
 }
