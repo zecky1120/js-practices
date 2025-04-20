@@ -22,3 +22,6 @@ class Memo {
     }
   }
 }
+
+const memo = new Memo(argv);
+memo.command();
