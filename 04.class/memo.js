@@ -10,4 +10,15 @@ class Memo {
   constructor(argv) {
     this.argv = argv;
   }
+  command() {
+    if (this.argv.l) {
+      utility.listMemo();
+    } else if (this.argv.r) {
+      utility.readMemo();
+    } else if (this.argv.d) {
+      utility.deleteMemo();
+    } else {
+      utility.createMemo();
+    }
+  }
 }
