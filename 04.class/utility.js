@@ -7,6 +7,23 @@ export default class Utility extends DbOperation {
     super();
     this.createTable();
   }
+
+  async #buildMemoChoices() {
+    try {
+      const rows = await this.fetch();
+      const transformRows = rows.map((row) => {
+        const firstLine = row.content.split("\n")[0];
+        return {
+          name: firstLine,
+          value: row.content,
+        };
+      });
+      return transformRows;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   #createMemoFromPrompt() {
     return new Promise((resolve) => {
       const lines = [];
