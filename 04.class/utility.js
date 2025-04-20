@@ -24,6 +24,24 @@ export default class Utility extends DbOperation {
     }
   }
 
+  async #selectFromPrompt(action) {
+    try {
+      const choices = await this.#buildMemoChoices();
+      const answer = new Select().prompt({
+        type: "select",
+        name: "value",
+        message: `Choose a note you want to ${action}:`,
+        choices,
+        result() {
+          return this.focused.value;
+        },
+      });
+      return answer;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   #createMemoFromPrompt() {
     return new Promise((resolve) => {
       const lines = [];
