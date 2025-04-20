@@ -8,6 +8,15 @@ export default class Utility extends DbOperation {
     this.createTable();
   }
 
+  async readMemo() {
+    try {
+      const result = await this.#selectFromPrompt("see");
+      console.log(result.value);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async createMemo() {
     try {
       const content = await this.#createMemoFromPrompt();
