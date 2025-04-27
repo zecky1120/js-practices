@@ -6,7 +6,7 @@ import {
   deleteSql,
 } from "./memoManagerVariable.js";
 
-export default class DbOperation {
+export default class MemoManager {
   constructor() {
     this.createTable = () => {
       return new Promise((resolve, reject) => {
