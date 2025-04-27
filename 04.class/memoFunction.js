@@ -2,7 +2,7 @@ import readline from "readline";
 import Select from "enquirer";
 import MemoManager from "./memoManager";
 
-export default class Utility extends DbOperation {
+export default class MemoFunction extends MemoManager {
   constructor() {
     super();
     this.createTable();
