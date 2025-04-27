@@ -12,13 +12,13 @@ class MemoCLI {
   }
   command() {
     if (this.argv.l) {
-      utility.listMemo();
+      this.memoFunction.listMemo();
     } else if (this.argv.r) {
-      utility.readMemo();
+      this.memoFunction.readMemo();
     } else if (this.argv.d) {
-      utility.deleteMemo();
+      this.memoFunction.deleteMemo();
     } else {
-      utility.createMemo();
+      this.memoFunction.createMemo();
     }
   }
 }
