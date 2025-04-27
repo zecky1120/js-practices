@@ -23,5 +23,5 @@ class MemoCLI {
   }
 }
 
-const memo = new Memo(argv);
-memo.command();
+const memoCLI = new MemoCLI(argv);
+memoCLI.command();
