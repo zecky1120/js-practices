@@ -6,7 +6,7 @@ import MemoFunction from "./memoFunction.js";
 const utility = new Utility();
 const argv = minimist(process.argv.slice(1));
 
-class Memo {
+class MemoCLI {
   constructor(argv) {
     this.argv = argv;
   }
