@@ -3,11 +3,11 @@
 import minimist from "minimist";
 import MemoFunction from "./memoFunction.js";
 
-const utility = new Utility();
 const argv = minimist(process.argv.slice(1));
 
 class MemoCLI {
   constructor(argv) {
+    this.memoFunction = new MemoFunction();
     this.argv = argv;
   }
   command() {
