@@ -1,10 +1,8 @@
 import readline from "readline";
 import Select from "enquirer";
-import MemoManager from "./memoManager.js";
 
-export default class MemoFunction extends MemoManager {
+export default class Command {
   constructor() {
-    super();
     this.createTable();
   }
 
