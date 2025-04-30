@@ -8,9 +8,11 @@ const argv = minimist(process.argv.slice(1));
 
 class MemoCLI {
   constructor(argv) {
-    this.memoFunction = new MemoFunction();
     this.argv = argv;
+    this.fileControl = new FileControl();
+    this.command = new Command(this.fileControl);
   }
+
   command() {
     if (this.argv.l) {
       this.memoFunction.listMemo();
