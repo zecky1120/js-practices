@@ -2,8 +2,8 @@ import readline from "readline";
 import Select from "enquirer";
 
 export default class Command {
-  constructor() {
-    this.createTable();
+  constructor(fileControl) {
+    this.fileControl = fileControl;
   }
 
   async listMemo() {
@@ -20,7 +20,7 @@ export default class Command {
   async deleteMemo() {
     try {
       const result = await this.#selectFromPrompt("delete");
-      await this.remove(result.value);
+      await this.fileControl.remove(result.value);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +38,7 @@ export default class Command {
   async createMemo() {
     try {
       const content = await this.#createMemoFromPrompt();
-      await this.add(content);
+      await this.fileControl.add(content);
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +46,7 @@ export default class Command {
 
   async #buildMemoChoices() {
     try {
-      const rows = await this.fetch();
+      const rows = await this.fileControl.fetch();
       const transformRows = rows.map((row) => {
         const firstLine = row.content.split("\n")[0];
         return {
