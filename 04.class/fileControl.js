@@ -6,7 +6,7 @@ import {
   deleteSql,
 } from "./memoManagerVariable.js";
 
-export default class MemoManager {
+export default class FileControl {
   constructor() {
     this.createTable = () => {
       return new Promise((resolve, reject) => {
