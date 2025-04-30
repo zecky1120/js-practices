@@ -13,6 +13,15 @@ class MemoCLI {
     this.command = new Command(this.fileControl);
   }
 
+  async run() {
+    try {
+      await this.fileControl.createTable();
+      this.option();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   option() {
     if (this.argv.l) {
       this.command.listMemo();
@@ -27,4 +36,4 @@ class MemoCLI {
 }
 
 const memoCLI = new MemoCLI(argv);
-memoCLI.command();
+memoCLI.run();
