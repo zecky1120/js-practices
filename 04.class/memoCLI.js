@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-import MemoFunction from "./memoFunction.js";
+import FileControl from "./fileControl.js";
+import Command from "./command.js";
 
 const argv = minimist(process.argv.slice(1));
 
