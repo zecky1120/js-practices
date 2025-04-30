@@ -13,15 +13,15 @@ class MemoCLI {
     this.command = new Command(this.fileControl);
   }
 
-  command() {
+  option() {
     if (this.argv.l) {
-      this.memoFunction.listMemo();
+      this.command.listMemo();
     } else if (this.argv.r) {
-      this.memoFunction.readMemo();
+      this.command.readMemo();
     } else if (this.argv.d) {
-      this.memoFunction.deleteMemo();
+      this.command.deleteMemo();
     } else {
-      this.memoFunction.createMemo();
+      this.command.createMemo();
     }
   }
 }
