@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-export default class FileControl {
+export default class Database {
   constructor(db, tableName) {
     this.db = new sqlite3.Database(db);
     this.tableName = tableName;

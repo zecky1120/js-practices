@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-import FileControl from "./fileControl.js";
+import Database from "./Database.js";
 import Command from "./command.js";
 
 const argv = minimist(process.argv.slice(1));
@@ -9,13 +9,13 @@ const argv = minimist(process.argv.slice(1));
 class MemoCLI {
   constructor(argv) {
     this.argv = argv;
-    this.fileControl = new FileControl("./memo.db", "memos");
-    this.command = new Command(this.fileControl);
+    this.database = new Database("./memo.db", "memos");
+    this.command = new Command(this.database);
   }
 
   async run() {
     try {
-      await this.fileControl.createTable();
+      await this.database.createTable();
       this.option();
     } catch (error) {
       console.error(error);
