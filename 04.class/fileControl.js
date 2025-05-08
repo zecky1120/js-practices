@@ -1,15 +1,15 @@
 import sqlite3 from "sqlite3";
 
 export default class FileControl {
-  constructor() {
-    this.db = new sqlite3.Database("./memo.db");
-    this.dbName = "memos";
+  constructor(db, tableName) {
+    this.db = new sqlite3.Database(db);
+    this.tableName = tableName;
   }
 
   createTable = () => {
     return new Promise((resolve, reject) => {
       this.db.exec(
-        `CREATE TABLE IF NOT EXISTS ${this.dbName} (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT)`,
+        `CREATE TABLE IF NOT EXISTS ${this.tableName} (id INTEGER PRIMARY KEY AUTOINCREMENT, content TEXT)`,
         (error) => {
           if (error) {
             reject(error);
@@ -24,7 +24,7 @@ export default class FileControl {
   add = (content) => {
     return new Promise((resolve, reject) => {
       this.db.run(
-        `INSERT INTO ${this.dbName}(content) VALUES (?)`,
+        `INSERT INTO ${this.tableName}(content) VALUES (?)`,
         content,
         (error) => {
           if (error) {
@@ -39,7 +39,7 @@ export default class FileControl {
 
   fetch = () => {
     return new Promise((resolve, reject) => {
-      this.db.all(`SELECT * FROM ${this.dbName}`, (error, rows) => {
+      this.db.all(`SELECT * FROM ${this.tableName}`, (error, rows) => {
         if (error) {
           reject(error);
         } else {
@@ -52,7 +52,7 @@ export default class FileControl {
   remove = (content) => {
     return new Promise((resolve, reject) => {
       this.db.run(
-        `DELETE FROM ${this.dbName} WHERE content = ?`,
+        `DELETE FROM ${this.tableName} WHERE content = ?`,
         [content],
         (error) => {
           if (error) {

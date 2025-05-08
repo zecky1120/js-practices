@@ -9,7 +9,7 @@ const argv = minimist(process.argv.slice(1));
 class MemoCLI {
   constructor(argv) {
     this.argv = argv;
-    this.fileControl = new FileControl();
+    this.fileControl = new FileControl("./memo.db", "memos");
     this.command = new Command(this.fileControl);
   }
 
