@@ -13,7 +13,7 @@ await run(db, createTableSql);
 try {
   const result = await run(db, insertSql, bookTitle);
   console.log(`本(ID: ${result.lastID})が追加されました`);
-  const row = await get(db, selectSql, [result.lastID]);
+  const row = await get(db, selectSql, result.lastID);
   console.log(`ID: ${row.id}, タイトル: ${row.title}`);
   await run(db, dropTableSql);
   console.log("テーブルを削除しました");
