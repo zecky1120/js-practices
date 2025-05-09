@@ -23,7 +23,7 @@ try {
     }
   }
   try {
-    await get(db, selectSql);
+    await get(db, selectSql, 1);
   } catch (err) {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
       console.error(err.message);

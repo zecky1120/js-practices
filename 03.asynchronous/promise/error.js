@@ -21,7 +21,7 @@ run(db, createTableSql)
     } else {
       throw err;
     }
-    return get(db, selectSql);
+    return get(db, selectSql, 1);
   })
   .catch((err) => {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
