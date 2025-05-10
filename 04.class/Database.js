@@ -39,13 +39,16 @@ export default class Database {
 
   fetch = () => {
     return new Promise((resolve, reject) => {
-      this.db.all(`SELECT * FROM ${this.tableName}`, (error, rows) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(rows);
-        }
-      });
+      this.db.all(
+        `SELECT * FROM ${this.tableName} ORDER BY id ASC`,
+        (error, rows) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(rows);
+          }
+        },
+      );
     });
   };
 
