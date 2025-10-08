@@ -17,10 +17,9 @@ run(db, createTableSql)
   })
   .then((row) => {
     console.log(`ID: ${row.id}, タイトル: ${row.title}`);
+    return run(db, dropTableSql);
   })
   .then(() => {
-    return run(db, dropTableSql).then(() => {
-      console.log("テーブルを削除しました");
-    });
+    console.log("テーブルを削除しました");
   })
   .finally(() => close(db));
