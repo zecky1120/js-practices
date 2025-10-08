@@ -28,8 +28,12 @@ run(db, createTableSql)
       console.error(err.message);
     } else {
       throw err;
-    }
-    console.log("テーブルを削除しました");
+    }    
+  })
+  .then(() =>{
     return run(db, dropTableSql);
+  })
+  .then(() => {
+    console.log("テーブルを削除しました");
   })
   .finally(() => close(db));
