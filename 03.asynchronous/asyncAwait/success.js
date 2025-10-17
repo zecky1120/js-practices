@@ -9,8 +9,8 @@ const bookTitle = "JavaScript Primer 迷わないための入門";
 const selectSql = "SELECT * FROM books WHERE id = ?";
 const dropTableSql = "DROP TABLE books";
 
-await run(db, createTableSql);
 try {
+  await run(db, createTableSql);
   const result = await run(db, insertSql, bookTitle);
   console.log(`本(ID: ${result.lastID})が追加されました`);
   const row = await get(db, selectSql, result.lastID);
