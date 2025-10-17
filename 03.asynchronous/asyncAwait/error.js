@@ -14,7 +14,6 @@ try {
   console.log("テーブルが作成されました");
   try {
     await run(db, insertSql, bookTitle);
-    console.log("本が追加されました");
   } catch (err) {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
       console.error(err.message);
