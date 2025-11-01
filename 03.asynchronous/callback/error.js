@@ -1,18 +1,17 @@
-import sqlite3 from "sqlite3";
-
-const db = new sqlite3.Database(":memory:");
-const createTableSql =
-  "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT UNIQUE NOT NULL)";
-const insertSql = "INSERT INTO book (title) VALUES (?)";
-const bookTitle = "JavaScript Primer 迷わないための入門";
-const selectSql = "SELECT * FROM booka WHERE id = ?";
-const dropTableSql = "DROP TABLE books";
+import {
+  db,
+  createTableSql,
+  errorInsertSql,
+  bookTitle,
+  errorSelectSql,
+  dropTableSql,
+} from "../query.js";
 
 db.run(createTableSql, () => {
   console.log("テーブルが作成されました");
-  db.run(insertSql, bookTitle, (err) => {
+  db.run(errorInsertSql, bookTitle, (err) => {
     console.error(err.message);
-    db.get(selectSql, 1, (err) => {
+    db.get(errorSelectSql, 1, (err) => {
       console.error(err.message);
       db.run(dropTableSql, () => {
         console.log("テーブルを削除しました");

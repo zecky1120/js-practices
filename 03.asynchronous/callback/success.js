@@ -1,12 +1,11 @@
-import sqlite3 from "sqlite3";
-
-const db = new sqlite3.Database(":memory:");
-const createTableSql =
-  "CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT UNIQUE NOT NULL)";
-const insertSql = "INSERT INTO books (title) VALUES (?)";
-const bookTitle = "JavaScript Primer 迷わないための入門";
-const selectSql = "SELECT * FROM books WHERE id = ?";
-const dropTableSql = "DROP TABLE books";
+import {
+  db,
+  createTableSql,
+  insertSql,
+  bookTitle,
+  selectSql,
+  dropTableSql,
+} from "../query.js";
 
 db.run(createTableSql, () => {
   db.run(insertSql, bookTitle, function () {
