@@ -8,4 +8,5 @@ export const errorInsertSql = "INSERT INTO book (title) VALUES (?)";
 export const bookTitle = "JavaScript Primer 迷わないための入門";
 export const selectSql = "SELECT * FROM books WHERE id = ?";
 export const errorSelectSql = "SELECT * FROM book WHERE id = ?";
+export const lastID = 1;
 export const dropTableSql = "DROP TABLE books";

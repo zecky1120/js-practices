@@ -5,6 +5,7 @@ import {
   errorInsertSql,
   bookTitle,
   errorSelectSql,
+  lastID,
   dropTableSql,
 } from "../query.js";
 
@@ -19,7 +20,7 @@ run(db, createTableSql)
     } else {
       throw err;
     }
-    return get(db, errorSelectSql, 1);
+    return get(db, errorSelectSql, lastID);
   })
   .catch((err) => {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
