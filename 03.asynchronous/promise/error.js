@@ -12,8 +12,8 @@ import {
 run(db, createTableSql)
   .then(() => {
     console.log("テーブルが作成されました");
+    return run(db, errorInsertSql, bookTitle);
   })
-  .then(() => run(db, errorInsertSql, bookTitle))
   .catch((err) => {
     if (err instanceof Error && err.code === "SQLITE_ERROR") {
       console.error(err.message);
